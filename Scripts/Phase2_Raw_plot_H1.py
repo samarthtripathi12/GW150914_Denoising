@@ -1,5 +1,5 @@
 # -------------------------------
-# Phase 3: Load and visualize GW150914 H1 raw strain
+# Phase 2 : Load and visualize GW150914 H1 raw strain
 # -------------------------------
 
 import h5py
