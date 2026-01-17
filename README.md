@@ -29,6 +29,26 @@ The simulations combine numerical data processing, visualization, and statistica
 
 ---
 
+## Development Iterations
+
+- **v1.0:** Raw HDF5 data loaded, basic time-domain visualization.  
+- **v2.0:** Band-pass filtering applied; waveform recovery achieved.  
+- **v3.0:** SNR computation implemented; merger detection confirmed.  
+- **v4.0:** High-pass SNR validation added; GIF creation for visualization.  
+
+---
+
+## Verification
+
+- Raw HDF5 file exists and is accessible.  
+- Full strain plot generated correctly.  
+- Band-pass filtered waveform matches expected chirp structure.  
+- SNR peak corresponds to merger time (~32s window).  
+- High-pass filtered SNR curve stronger than original SNR.  
+- Metrics (Max SNR, MSE) confirm waveform recovery and quantitative improvement.  
+
+---
+
 ## Requirements
 
 - Python 3.11+  
@@ -294,4 +314,3 @@ This project demonstrates **gravitational wave signal extraction** from experime
 - GIFs and metrics provide a visually compelling and quantitative presentation.  
 
 The work combines **experimental data handling, signal processing, statistical analysis, and visualization** to deliver a polished, research-level demonstration of gravitational wave signal detection.
-
