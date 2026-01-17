@@ -1,5 +1,5 @@
 # --------------------------------
-# Phase 4: Zoom into GW150914 merger chirp
+# Phase 3: Zoom into GW150914 merger chirp
 # --------------------------------
 
 import h5py
