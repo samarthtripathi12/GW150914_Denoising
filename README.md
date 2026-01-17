@@ -1,260 +1,239 @@
-ravitational Wave Signal Denoising — GW150914
+# Gravitational Wave Signal Extraction (GW150914)
 
-Computational Physics · Signal Processing · Experimental Validation
+Extracting and validating the first directly detected gravitational wave using real LIGO interferometer data.
 
-Abstract
+---
 
-This project reconstructs the first direct detection of gravitational waves (GW150914) using real LIGO interferometer data.
-Through a structured, phase-wise computational pipeline, the raw detector strain is transformed into a clean astrophysical signal using frequency-domain analysis, band-pass filtering, and quantitative validation.
+## Abstract
 
-The work demonstrates how weak spacetime perturbations are extracted from extreme noise environments, combining time-domain analysis, Fourier methods, filtering theory, and signal-to-noise validation, supported by static plots and visual progression summaries.
+This project analyzes real gravitational wave strain data from the LIGO Hanford (H1) detector corresponding to the historic **GW150914** event.  
+It progressively reconstructs the gravitational wave signal buried in detector noise using a complete scientific pipeline:
 
-Scientific Motivation
+- Time-domain strain analysis  
+- Frequency-domain (FFT) characterization  
+- Band-pass filtering and denoising  
+- Quantitative validation using Signal-to-Noise Ratio (SNR)
 
-Gravitational waves are not directly visible in detector data. Their detection requires:
+The project bridges **General Relativity, experimental physics, and computational signal processing**, reproducing the essential steps used by real gravitational-wave observatories.
 
-Careful frequency-domain reasoning
+---
 
-Noise suppression without signal distortion
+## Why This Project
 
-Quantitative validation beyond visual inspection
+- Uses **real LIGO interferometer data**
+- Demonstrates **how gravitational waves are detected experimentally**
+- Connects **Einstein’s General Relativity to observational evidence**
+- Shows the **full pipeline from raw noise to physical signal**
+- Emphasizes **scientific rigor through quantitative metrics**
 
-This project answers:
+---
 
-Where the GW150914 signal resides in frequency space
+## Development Iterations
 
-How filtering reveals the chirp morphology
+- **v1.0:** Raw strain visualization (signal fully buried in noise)  
+- **v2.0:** Frequency-domain identification via FFT  
+- **v3.0:** Band-pass filtering and denoising  
+- **v4.0:** Quantitative validation using SNR metrics  
 
-How signal quality improves objectively after denoising
+---
 
-Repository Structure
+## Verification
 
-GW150914_Denoising/
-│
-├── Scripts/
-│   ├── phase1_data_loading.py
-│   ├── phase2_raw_time_domain.py
-│   ├── phase3_fft_analysis.py
-│   ├── phase4_bandpass_filter.py
-│   ├── phase5_export_denoised_csv.py
-│   └── create_gif_and_metrics.py
-│
-├── Data/
-│   └── H-H1_LOSC_4_V2-1126259446-32.hdf5
-│
-├── Plots/
-│   ├── phase2_raw_strain.png
-│   ├── phase3_fft_spectrum.png
-│   ├── phase4_filtered_strain.png
-│   ├── phase4_overlay_raw_vs_filtered.png
-│   ├── denoising_progress.gif
-│   └── snr_metrics.csv
-│
-├── Denoised.csv
-└── README.md
+- Event: **GW150914**
+- Detector: **LIGO Hanford (H1)**
+- Recovered chirp matches published LIGO results
+- SNR improves after filtering
+- Results consistent with LOSC documentation
 
-Development Progression
+---
 
-v1.0 — Raw strain visualization
+## Requirements
 
-v2.0 — Frequency-domain (FFT) analysis
+- Python 3.11+
+- NumPy
+- SciPy
+- Matplotlib
+- h5py
 
-v3.0 — Band-pass filtering
+---
 
-v4.0 — CSV-based reproducibility
+## Phase 1: Raw Gravitational Wave Strain
 
-v5.0 — Quantitative metrics + visual denoising summary
+**Scientific Question:**  
+What does the LIGO detector actually record?
 
-Phase-wise Scientific Breakdown
-Phase 1 — Data Acquisition & Parsing
-Scientific Question
+**Description:**  
+Raw strain data is loaded directly from the LIGO HDF5 file with no preprocessing.  
+The gravitational wave signal is completely buried inside detector noise.
 
-“How is real gravitational-wave detector data structured?”
+**Implementation:**
 
-Description
+- Load strain and time arrays
+- Plot time-domain strain
 
-The official LIGO LOSC HDF5 dataset for GW150914 is loaded, and strain data is extracted along with sampling metadata.
+**Static Plot:**  
+`Plots/phase1_raw_strain.png`
 
-Outputs
+**Key Features:**
 
-In-memory strain array
+- Time vs strain
+- No visible chirp
+- Noise-dominated signal
 
-Time axis
+**End-state / Outputs:**
 
-What This Establishes
+- Code: `Scripts/phase1_load_strain.py`
+- Static plot: `Plots/phase1_raw_strain.png`
 
-Correct handling of real experimental data
+**What This Proves:**
 
-Foundation for all subsequent analysis
+- Gravitational waves are **not visually detectable** without signal processing.
 
-Phase 2 — Raw Time-Domain Inspection
-Scientific Question
+---
 
-“Is the gravitational wave visible in raw detector data?”
+## Phase 2: Frequency-Domain Analysis (FFT)
 
-Description
+**Scientific Question:**  
+Where does the gravitational wave signal exist in frequency space?
 
-The raw strain is plotted in the time domain.
+**Description:**  
+A Fast Fourier Transform (FFT) is applied to the raw strain to identify frequency bands containing physical signal content.
 
-Static Output
+**Implementation:**
 
-Plots/phase2_raw_strain.png
+- FFT computation
+- Amplitude spectrum visualization
 
-Observation
+**Static Plot:**  
+`Plots/phase2_fft_spectrum.png`
 
-The signal is completely buried in noise, with no visible chirp structure.
+**Key Features:**
 
-What This Demonstrates
+- Frequency-localized signal content
+- Noise-dominated regions clearly identified
 
-Direct visualization is insufficient
+**End-state / Outputs:**
 
-Necessity of signal processing
+- Code: `Scripts/phase2_fft_analysis.py`
+- Static plot: `Plots/phase2_fft_spectrum.png`
 
-Phase 3 — Frequency-Domain Analysis (FFT)
-Scientific Question
+**What This Proves:**
 
-“Where does the signal exist in frequency space?”
+- Gravitational wave signals are **frequency-localized**, enabling effective filtering.
 
-Description
+---
 
-A Fast Fourier Transform (FFT) is applied to the raw strain to identify dominant frequency components.
+## Phase 3: Band-Pass Filtering & Denoising
 
-Static Output
+**Scientific Question:**  
+Can the gravitational wave be recovered from noise?
 
-Plots/phase3_fft_spectrum.png
+**Description:**  
+A band-pass filter is applied using the frequency range identified in Phase 2, isolating the gravitational wave signal.
 
-Observation
+**Implementation:**
 
-The GW150914 signal occupies a specific frequency band, justifying targeted filtering.
+- SciPy band-pass filter
+- Reconstruction of filtered strain
 
-What This Demonstrates
+**Static Plot:**  
+`Plots/phase3_filtered_strain.png`
 
-Proper use of Fourier methods
+**Overlay Plot:**  
+`Plots/phase3_raw_vs_filtered.png`
 
-Physical interpretation of frequency content
+**Key Features:**
 
-Phase 4 — Band-Pass Filtering & Signal Recovery
-Scientific Question
+- Clear chirp structure
+- Direct comparison of raw vs filtered signal
 
-“Can noise be suppressed without destroying the signal?”
+**End-state / Outputs:**
 
-Description
+- Code: `Scripts/phase3_bandpass_filter.py`
+- Static plots:
+  - `Plots/phase3_filtered_strain.png`
+  - `Plots/phase3_raw_vs_filtered.png`
+- Data file: `Denoised.csv`
 
-A band-pass filter isolates the frequency range associated with the inspiral–merger signal.
+**What This Proves:**
 
-Static Outputs
+- The gravitational wave signal can be recovered **without distorting physical information**.
 
-Plots/phase4_filtered_strain.png
+---
 
-Plots/phase4_overlay_raw_vs_filtered.png
+## Phase 4: Quantitative Validation (SNR & Metrics)
 
-Observation
+**Scientific Question:**  
+Is the recovered signal statistically significant?
 
-The chirp structure becomes clearly visible after filtering.
+**Description:**  
+Signal-to-noise ratio (SNR) is computed before and after filtering to quantitatively validate improvement.
 
-What This Demonstrates
+**Implementation:**
 
-Noise suppression effectiveness
+- Numerical SNR calculation
+- Metric export to CSV
 
-Preservation of physical signal morphology
+**Metrics Output:**  
+`Plots/snr_metrics.csv`
 
-Phase 5 — Denoised Signal Export (Reproducibility)
-Scientific Question
+**Key Features:**
 
-“Can the cleaned signal be reused and independently verified?”
+- Objective numerical validation
+- Clear improvement after filtering
 
-Description
+**End-state / Outputs:**
 
-The raw and filtered signals are exported to a structured CSV file.
+- Code: `Scripts/phase4_snr_metrics.py`
+- Metrics file: `Plots/snr_metrics.csv`
 
-Output
+**What This Proves:**
 
-Denoised.csv
+- The recovered signal is **statistically meaningful**, not a visual artifact.
 
-Format
+---
 
-time, raw_strain, filtered_strain
+## Phase 5: Phase-Wise Visualization (Pipeline Summary)
 
-What This Demonstrates
+**Scientific Question:**  
+Can the full detection pipeline be summarized visually?
 
-Reproducibility
+**Description:**  
+Representative outputs from each phase are combined into a phase-wise visualization.
 
-Separation of processing and analysis
+**Animation:**  
+`Plots/denoising_progress.gif`
 
-Phase 6 — Quantitative Validation (Metrics)
-Scientific Question
+**Note:**  
+This animation is **phase-based, not motion-based**.  
+Each frame represents a distinct computational stage, which is scientifically correct.
 
-“Is the signal objectively improved after filtering?”
+**End-state / Outputs:**
 
-Metrics Computed
+- Animation: `Plots/denoising_progress.gif`
 
-Peak Signal-to-Noise Ratio (SNR)
+**What This Proves:**
 
-Mean Squared Error (MSE)
+- The gravitational-wave detection pipeline is **transparent and reproducible**.
 
-Output
+---
 
-Plots/snr_metrics.csv
+## Step-by-Step Computational Pipeline
 
-What This Demonstrates
+1. Load raw LIGO strain data  
+2. Visualize time-domain strain  
+3. Perform FFT analysis  
+4. Design band-pass filter  
+5. Recover filtered signal  
+6. Compute SNR metrics  
+7. Export quantitative results  
+8. Generate phase-wise visualization  
 
-Scientific rigor beyond visuals
+---
 
-Objective improvement measurement
+## Conclusion
 
-Phase 7 — Denoising Progression Visualization (GIF)
-Purpose
+This project reconstructs the first directly detected gravitational wave using real LIGO interferometer data.  
+Starting from raw detector noise, the signal is extracted through frequency analysis, filtering, and quantitative validation.
 
-To visually summarize the entire denoising pipeline in a reviewer-friendly format.
-
-Frames Included
-
-Raw noisy strain (time domain)
-
-FFT amplitude spectrum
-
-Overlay of raw (blue) and filtered (orange) strain
-
-Note:
-This GIF is stage-based, not animated motion.
-Each frame represents a distinct processing phase, which is scientifically correct and intentional.
-
-Output
-
-Plots/denoising_progress.gif
-
-Final Results Summary
-Aspect	Before Filtering	After Filtering
-Noise Level	High	Suppressed
-Chirp Visibility	Hidden	Clearly visible
-Peak SNR	Lower	Higher
-
-(Exact numerical values in snr_metrics.csv)
-
-Requirements
-
-Python 3.11+
-
-NumPy
-
-SciPy
-
-Matplotlib
-
-h5py
-
-imageio
-
-Conclusion
-
-This project presents a complete, reproducible reconstruction of GW150914, demonstrating:
-
-Real experimental data handling
-
-Frequency-domain reasoning
-
-Signal denoising and validation
-
-Static and visual communication of results
-
-The work reflects research-level computational physics practice, suitable for academic evaluation and technical portfolios.
+The work combines **computational physics, experimental data analysis, validation, and visualization** to deliver a fully reproducible, scientifically rigorous gravitational-wave detection pipeline.
