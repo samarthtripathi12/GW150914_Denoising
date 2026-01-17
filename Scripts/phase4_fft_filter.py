@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from scipy.signal import butter, filtfilt
 
 # =========================
-# PHASE 5: FFT + FILTERING
+# PHASE 4: FFT + FILTERING
 # =========================
 
 # --------- FILE PATH ---------
@@ -67,3 +67,4 @@ np.savetxt(
 print("✅ Phase 4 FFT plot saved")
 print("✅ Phase 5 filtered waveform plot saved")
 print("✅ Denoised strain CSV saved")
+
