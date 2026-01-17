@@ -73,10 +73,10 @@ The simulations combine numerical data processing, visualization, and statistica
 - Only data acquisition.  
 
 **Static Plot:**  
-❌ None  
+ None  
 
 **Animation:**  
-❌ None  
+ None  
 
 **Key Features:**  
 - Confirms successful download and integrity of raw data.  
@@ -103,10 +103,10 @@ The simulations combine numerical data processing, visualization, and statistica
 - Plot: Time (s) vs Strain  
 
 **Static Plot:**  
-![Phase 2: Raw Strain](Plots/Phase2_RawStrain.png)  
+![Phase 2: Raw Strain](plots/phase2_raw_plot_h1.png)  
 
 **Animation:**  
-❌ None  
+ None  
 
 **Key Features:**  
 - Demonstrates ability to read HDF5 data.  
@@ -114,7 +114,7 @@ The simulations combine numerical data processing, visualization, and statistica
 
 **End-state / Outputs:**  
 - Code: `Scripts/phase2_raw_plot.py`  
-- Plot: `Plots/Phase2_RawStrain.png`  
+- Plot: `Plots/phase2_raw_plot_h1.png`  
 
 **What This Proves:**  
 - Can load experimental data and visualize noisy strain signals.
@@ -135,17 +135,17 @@ The simulations combine numerical data processing, visualization, and statistica
 - Time-domain plot (zoomed)  
 
 **Static Plot:**  
-![Phase 3: Merger Zoom](Plots/Phase3_MergerZoom.png)  
+![Phase 3: Merger Zoom](plots/phase3_zoomed_chirp_h1.png)  
 
 **Animation:**  
-❌ None  
+ None  
 
 **Key Features:**  
 - Shows gravitational wave structure despite noise.  
 
 **End-state / Outputs:**  
-- Code: `Scripts/phase3_zoom_chirp.py`  
-- Plot: `Plots/Phase3_MergerZoom.png`  
+- Code: `Scripts/phase3_zoom_chirp_h1.py`   
+- Plot: `plots/phase3_zoomed_chirp_h1.png`   
 
 **What This Proves:**  
 - Can visualize signal evolution near merger.
@@ -162,22 +162,22 @@ The simulations combine numerical data processing, visualization, and statistica
 - Identifies dominant frequency range (~20–500 Hz).  
 
 **Implementation:**  
-- Script: `Scripts/phase4_fft_analysis.py`  
+- Script: `Scripts/phase4_fft_flter.py`   
 - Plot: Frequency (Hz) vs Amplitude  
 
 **Static Plot:**  
-![Phase 4: FFT Spectrum](Plots/Phase4_H1_FrequencySpectrum.png)  
+![Phase 4: FFT Spectrum](plots/phase4_fft_spectrum.png)  
 
 **Animation:**  
-❌ None  
+ None  
 
 **Key Features:**  
 - Diagnoses noise dominance at low frequencies.  
 - Establishes frequency range for band-pass filtering.  
 
 **End-state / Outputs:**  
-- Code: `Scripts/phase4_fft_analysis.py`  
-- Plot: `Plots/Phase4_H1_FrequencySpectrum.png`  
+- Code: `Scripts/phase4_fft_filter.py`  
+- Plot: `plots/phase4_fft_spectrum.png`  
 
 **What This Proves:**  
 - Can perform FFT and identify signal frequency characteristics.
@@ -199,10 +199,10 @@ The simulations combine numerical data processing, visualization, and statistica
 - Plot two curves: original noisy vs filtered signal  
 
 **Static Plot:**  
-![Phase 5: Cleaned vs Noisy](Plots/Phase5_BeforeAfterWaveform.png)  
+![Phase 5: Cleaned vs Noisy](plots/phase5_h1_frequency_vs_strain.png)  
 
 **Animation:**  
-❌ None  
+ None  
 
 **Key Features:**  
 - Chirp now clearly visible.  
@@ -210,7 +210,7 @@ The simulations combine numerical data processing, visualization, and statistica
 
 **End-state / Outputs:**  
 - Code: `Scripts/phase5_bandpass_filter.py`  
-- Plot: `Plots/Phase5_BeforeAfterWaveform.png`  
+- Plot: `plots/phase5_h1_frequency_vs_strain.png`  
 
 **What This Proves:**  
 - Band-pass filtering successfully recovers the gravitational wave signal.
@@ -227,21 +227,21 @@ The simulations combine numerical data processing, visualization, and statistica
 - Peak SNR corresponds to merger.  
 
 **Implementation:**  
-- Script: `Scripts/phase6_snr_analysis.py`  
+- Script: `Scripts/phase6_matched_filter.py`  
 - Plot: Time vs SNR  
 
 **Static Plot:**  
-![Phase 6: SNR vs Time](Plots/Phase6_SNR_vs_Time.png)  
+![Phase 6: SNR vs Time](plots/phase6_snr.png)  
 
 **Animation:**  
-❌ None  
+ None  
 
 **Key Features:**  
 - Converts physics into statistical detection significance.  
 
 **End-state / Outputs:**  
-- Code: `Scripts/phase6_snr_analysis.py`  
-- Plot: `Plots/Phase6_SNR_vs_Time.png`  
+- Code: `Scripts/phase6_matched_filter.py`  
+- Plot: `Plots/plots/phase6_snr.png`  
 
 **What This Proves:**  
 - Confirms gravitational wave detection via SNR.
@@ -258,21 +258,21 @@ The simulations combine numerical data processing, visualization, and statistica
 - Filtered SNR peak stronger and cleaner.  
 
 **Implementation:**  
-- Script: `Scripts/phase6b_highpass_compare.py`  
+- Script: `Scripts/phase6_5_highpass_validation.py`  
 - Plot: Time vs SNR (two curves)  
 
 **Static Plot:**  
-![Phase 6b: High-Pass SNR](Plots/Phase6b_HighPass_SNR.png)  
+![Phase 6b: High-Pass SNR](plots/phase6_5_snr_validation.png)  
 
 **Animation (GIF of Comparison):**  
-![Denoising GIF](Plots/denoising_progress.gif)  
+![Denoising GIF](plots/denoising_progress.gif)  
 
 **Key Features:**  
 - Original (blue) vs high-pass (orange) SNR comparison.  
 
 **End-state / Outputs:**  
-- Code: `Scripts/phase6b_highpass_compare.py`  
-- Plot: `Plots/Phase6b_HighPass_SNR.png`  
+- Code: `Scripts/phase6_5_highpass_validation.py`  
+- Plot: `Plots/phase6-5_snr_validation.png`  
 - GIF: `Plots/denoising_progress.gif`  
 - Metrics CSV: `Plots/snr_metrics.csv`  
 
